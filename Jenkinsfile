@@ -4,11 +4,6 @@ pipeline {
         kube_namespace = "${env.JOB_NAME}-${env.BUILD_ID}"
     }
     stages {
-        stage('checkout') {
-            steps {
-                checkout scm
-            }
-        }
         stage('build images') {
             steps {
                 withDockerRegistry([credentialsId: 'ecr:eu-central-1:jenkins-aws-credentials', url: 'https://514443763038.dkr.ecr.eu-central-1.amazonaws.com']) {
